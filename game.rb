@@ -4,18 +4,18 @@ class Game
   START_CASH = 100
 
   def initialize
-    @dealer = Diler.new("John")
-    @diler.put_in_bank(START_CASH)
+    @dealer = Dealer.new("John")
+    @dealer.put_in_bank(START_CASH)
   end
 
-  def create_new_player(name)
-    @player = PLayer.new(player_name)
+  def create_new_player(player_name)
+    @player = User.new(player_name)
     player.put_in_bank(START_CASH)
     player
   end
 
   def create_new_round
-    Round.new(diler, player)
+    Round.new(dealer, player)
   end
 
   private

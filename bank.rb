@@ -16,7 +16,7 @@ class Bank
   end
 
   def is_empty?
-    sum.zero?
+    total_sum.zero?
   end
 
   def sum?(sum) #check the availible sum
@@ -25,5 +25,5 @@ class Bank
 
   private
 
-  attr_writer :sum
+  attr_writer :total_sum
 end

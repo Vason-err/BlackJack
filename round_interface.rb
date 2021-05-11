@@ -21,8 +21,10 @@ class RoundInterface
   end
 
   def steps
-    break unless player_steps
-    diler_steps
+    loop do
+      break unless player_steps
+      dealer_steps
+    end
   end
 
   def open_cards
@@ -49,8 +51,8 @@ class RoundInterface
 
   private
 
-  def diler
-    round.diler
+  def dealer
+    round.dealer
   end
 
   def player
@@ -63,7 +65,7 @@ class RoundInterface
 
   def player_steps
     puts "Player steps:"
-    puts "#{player.show_actions}"
+    puts "Actions: #{player.show_actions}"
     case gets.chomp
     when "add"
       player.actions.delete("add")
@@ -79,8 +81,8 @@ class RoundInterface
     end
   end
 
-  def diler_step
-    puts "Diler step"
-    diler.card(deck.card) if diler.points < diler.max.points
+  def dealer_steps
+    puts "Dealer steps:"
+    dealer.card(deck.card) if dealer.points < dealer.max_points
   end
 end

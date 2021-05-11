@@ -13,11 +13,11 @@ class Player
   end
 
   def take_a(card)
-    hand.add_card(card)
+    hand.add(card)
   end
 
   def points
-    hand.value?
+    hand.value
   end
 
   def cards
@@ -25,10 +25,10 @@ class Player
   end
 
   def show_cards
-    "#{cards.map(&:rank).join(' '), points: "#{points}"}"
+    "#{cards.map(&:rank).join(' ') }, points: #{points}"
   end
 
   def hand_clear
-    hand.hand_clear
+    hand.clear
   end
 end

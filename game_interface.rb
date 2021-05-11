@@ -1,13 +1,13 @@
 class GameInterface
-  attr_reader :play
+  attr_reader :game
 
-  def initialize(play)
-    @play = play
+  def initialize(game)
+    @game = game
   end
 
   def start_new_game
     puts 'Welcome to Black Jack!'
-    puts "Hello) My name is #{diler.name}. Want to play?"
+    puts "Hello) My name is #{dealer.name}. Want to play?"
     create_new_player
     loop do
       round_interface = RoundInterface.new(create_round)
@@ -29,11 +29,11 @@ class GameInterface
 
   private
 
-  def diler
-    play.diler
+  def dealer
+    game.dealer
   end
 
   def player
-    play.player
+    game.player
   end
 end
