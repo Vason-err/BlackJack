@@ -11,7 +11,7 @@ class GameInterface
     create_new_player
     loop do
       round_interface = RoundInterface.new(create_round)
-      round_interface.start_new_round
+      round_interface.start
       break unless round_interface.next_round?
     end
     puts "Thanks for playing, #{player.name}, great game!"

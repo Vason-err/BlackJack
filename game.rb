@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :player, :dealer
+  attr_reader :player, :dealer
 
   START_CASH = 100
 

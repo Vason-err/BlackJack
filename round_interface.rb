@@ -10,12 +10,13 @@ class RoundInterface
     start_new_round
     steps
     open_cards
-    result
+    results
     prize
   end
 
   def start_new_round
     puts 'New round!!!'
+    round.init
     puts "Player.cards: #{player.show_cards}"
     puts "Dealer cards: * *"
   end
@@ -35,13 +36,13 @@ class RoundInterface
 
   def results
     puts "Round results:"
-    winner = round.winner
-    puts "Winner #{winner.name}"
+    winner = round.winner_is?
+    puts "Winner #{winner.name}!!!"
   end
 
   def prize
     round.prize
-    puts "Bank: #{player.bank.sum}"
+    puts "Bank: #{player.bank.total_sum}"
   end
 
   def next_round?
@@ -69,11 +70,11 @@ class RoundInterface
     case gets.chomp
     when "add"
       player.actions.delete("add")
-      player.card(deck.card)
+      player.take_a(deck.draw)
       puts "Player cards: #{player.show_cards}"
       true
     when "open"
-      open
+      open_cards
       false
     when "pass"
       player.actions.delete("pass")
@@ -83,6 +84,6 @@ class RoundInterface
 
   def dealer_steps
     puts "Dealer steps:"
-    dealer.card(deck.card) if dealer.points < dealer.max_points
+    dealer.take_a(deck.draw) if dealer.points < dealer.max_point
   end
 end

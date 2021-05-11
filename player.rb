@@ -1,5 +1,4 @@
 class Player
-  attr_reader :actions
   attr_reader :name, :bank, :hand
 
   def initialize(name)
