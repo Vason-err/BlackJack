@@ -11,6 +11,10 @@ class Player
     bank.put(sum)
   end
 
+  def make_a_bet
+    bank.take(hand.bet!)
+  end
+
   def take_a(card)
     hand.add(card)
   end
@@ -24,7 +28,8 @@ class Player
   end
 
   def show_cards
-    "#{cards.map(&:rank).join(' ') }, points: #{points}"
+    ""
+    "#{cards.map(&:to_string).join(' ') }, points: #{points}"
   end
 
   def hand_clear

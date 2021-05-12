@@ -5,4 +5,8 @@ class Dealer < Player
   def max_point
     MAX_POINT
   end
+
+  def can_take?
+    return true if points < max_point
+  end
 end

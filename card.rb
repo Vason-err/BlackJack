@@ -15,4 +15,8 @@ class Card
     else 11
     end
   end
+
+  def to_string
+    self.rank + " of " + self.suit
+  end
 end

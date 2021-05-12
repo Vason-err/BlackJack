@@ -1,12 +1,17 @@
 class Hand
   attr_reader :cards
 
+  MIN_BET = 10
   def inintialize
     @cards = []
   end
 
   def add(card)
     @cards << card
+  end
+
+  def bet!
+    MIN_BET
   end
 
   def value

@@ -9,14 +9,17 @@ class RoundInterface
   def start
     start_new_round
     steps
-    open_cards
     results
     prize
   end
 
   def start_new_round
-    puts 'New round!!!'
+    puts "New round #{player.name}!!!"
     round.init
+    puts "#{player.bank.total_sum}"
+    puts "#{dealer.bank.total_sum}"
+    puts "#{deck.bank.total_sum}"
+    puts "Bets are made!"
     puts "Player.cards: #{player.show_cards}"
     puts "Dealer cards: * *"
   end
@@ -36,8 +39,12 @@ class RoundInterface
 
   def results
     puts "Round results:"
-    winner = round.winner_is?
-    puts "Winner #{winner.name}!!!"
+    if round.winner_is?
+      winner = round.winner_is?
+      puts "Winner #{winner.name}!!!"
+    else
+      puts "Draw!"
+    end
   end
 
   def prize
@@ -84,6 +91,11 @@ class RoundInterface
 
   def dealer_steps
     puts "Dealer steps:"
-    dealer.take_a(deck.draw) if dealer.points < dealer.max_point
+    if dealer.can_take?
+      puts "Add"
+      dealer.take_a(deck.draw)
+    else
+      puts "Pass"
+    end
   end
 end
