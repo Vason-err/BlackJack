@@ -9,14 +9,6 @@ class User < Player
         "open" => "Open cards"
       }
     end
-  end 
-
-  def self.actions
-    {
-      "add" => "Add a card",
-      "pass" => "Pass",
-      "open" => "Open cards"
-    }
   end
 
   def init_actions

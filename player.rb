@@ -29,7 +29,7 @@ class Player
 
   def show_cards
     ""
-    "#{cards.map(&:to_string).join(' ') }, points: #{points}"
+    "#{cards.map(&:to_string).join(', ') }, points: #{points}"
   end
 
   def hand_clear
