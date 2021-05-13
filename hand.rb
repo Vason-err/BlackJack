@@ -16,17 +16,14 @@ class Hand
 
   def value
     total_value = 0  
-    number_of_aces = 0
+    number_of_aces = self.cards.count { |card| card.rank == "Ace"}
     self.cards.each do |card|
-      if card.rank == "Ace"
-        number_of_aces += 1
-      end
       total_value += card.value
     end
-    counter = 0
-    while total_value > 21 && counter < number_of_aces
-      counter += 1
-      total_value -= 10
+    number_of_aces.times do
+      if total_value > 21
+        total_value -= 10
+      end
     end
     return total_value
   end

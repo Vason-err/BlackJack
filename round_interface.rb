@@ -17,7 +17,7 @@ class RoundInterface
     puts "New round #{player.name}!!!"
     round.init
     puts "Bets are made!"
-    puts "Player.cards: #{player.show_cards}"
+    puts "Player.cards: #{show_cards(player)}"
     puts "Dealer cards: * *"
   end
 
@@ -30,8 +30,8 @@ class RoundInterface
 
   def open_cards
     puts "Players show their cards"
-    puts "Player cards: #{player.show_cards}"
-    puts "Dealer cards: #{dealer.show_cards}"
+    puts "Player cards: #{show_cards(player)}"
+    puts "Dealer cards: #{show_cards(dealer)}"
   end
 
   def results
@@ -75,7 +75,7 @@ class RoundInterface
     when "add"
       player.actions.delete("add")
       player.take_a(deck.draw)
-      puts "Player cards: #{player.show_cards}"
+      puts "Player cards: #{show_cards(player)}"
       true
     when "open"
       open_cards
@@ -94,5 +94,13 @@ class RoundInterface
     else
       puts "Pass"
     end
+  end
+
+  def show_cards(player)
+    "#{player.cards.map { |card| to_string(card) }.join(', ')}, points: #{player.points}"
+  end
+
+  def to_string(card)
+    card.rank + " of " + card.suit
   end
 end
