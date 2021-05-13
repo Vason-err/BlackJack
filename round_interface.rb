@@ -16,9 +16,6 @@ class RoundInterface
   def start_new_round
     puts "New round #{player.name}!!!"
     round.init
-    puts "#{player.bank.total_sum}"
-    puts "#{dealer.bank.total_sum}"
-    puts "#{deck.bank.total_sum}"
     puts "Bets are made!"
     puts "Player.cards: #{player.show_cards}"
     puts "Dealer cards: * *"
